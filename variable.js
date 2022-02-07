@@ -2,7 +2,8 @@
 // add in ES5
 "use strict";
 
-// 2. Variable
+// 2. Variable, rw(read/write)
+// variable은 메모리의 값을 읽고 쓰는 것이 가능하다. 수정가능
 // let (added in ES6)
 let globalName = "global name"; //global scope 변수(전역변수)
 {
@@ -19,15 +20,22 @@ console.log(name);
 // hoisting이란 어디에 선언했나에 상관없이 항상 제일 위로 선언을 끌어올려 주는 것을 말함.
 // var는 block scope이 없음. 우리가 아무리 깊은 곳에 블럭을 이용해서 변수를 선언해도 어디에서나 아무곳에서나 보일 수 있는게 바로 var임.
 
-// 3. constant
-// 한번 할당하면 값이 절대 바뀌지 않는 변수를 말함.
+// 3. constant, r(read only)
+// 한번 할당하면 값이 절대 바뀌지 않는 변수를 말함. 메모리를 읽는 것만 가능하고 다시 다른 값으로 쓰는 것은 불가능함. 
+// immutable 변수를 선호하는 이유 3가지
 //  - security
 //  - thread safety
 //  - reduce human mistakes
 const daysInWeek = 7;
 const maxNumber = 5;
 
+// Immutable data types: primitive types, frozen objects
+// Mutable data types: all objects by default are mutable in JS
+
 // 4. Variable types
+// 메모리에 값이 저장되는 방법 2가지
+// primitive type -> number, string, boolean, null, undefined, symbol
+// object type, box container
 
 const count = 17; // integer
 const size = 17.1; // decimal number
