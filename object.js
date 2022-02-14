@@ -140,7 +140,7 @@ console.log(user4);
 // target - 목표객체. 출처 객체의 속성을 복사해 반영한 후 반환할 객체임.
 // sources - 출처객체. 목표 객체에 반영하고자 하는 속성들을 갖고 있는 객체들임.
 const user5 = Object.assign({}, user);
-console.log(user4);
+console.log(user5);
 
 // another example
 const fruit1 = { color: "red" };
@@ -148,4 +148,4 @@ const fruit2 = { color: "blue", size: "big" };
 const mixed = Object.assign({}, fruit1, fruit2);
 console.log(mixed.color);
 console.log(mixed.size);
-// 앞에 동일한 property가 있다면 뒤에 나오는 출처 object일수록 값을 덮어씌우기 때문임.
+// 앞에 동일한 property가 있다면 뒤에 나오는 출처 object일수록 값을 덮어씌움.
