@@ -67,37 +67,60 @@ const students = [
 // Q6. make an array of enrolled students
 {
   const result = students.filter((student) => student.enrolled === true);
-  // filter함수는 콜백함수를 전달해서 이 콜백함수가 true인 요소들만 모아서 새로운 배열을 전달해줌. 
+  // filter함수는 콜백함수를 전달해서 이 콜백함수가 true인 요소들만 모아서 새로운 배열을 전달해줌.
   console.log(result);
 }
 // find와 filter의 차이
 // find와 filter는 콜백함수를 쓰고 boolean이 리턴된다는 공통점이 있지만, find는 처음으로 true가 나오면 즉시 함수를 중단하고 그 element를 출력함.
-// 하지만 filter는 true가 처음으로 나오더라도 중단시키지 않고 true가 나온 element들로 새로운 array를 반환하는 api임. 
+// 하지만 filter는 true가 처음으로 나오더라도 중단시키지 않고 true가 나온 element들로 새로운 array를 반환하는 api임.
 
 // Q7. make an array containing only the students' scores
 // result should be: [45, 80, 90, 66, 88]
 {
-
+  const result = students.map((student) => student.score); // 콜백함수로 전달되는 인자는 최대한 이해햐기 쉽게 쓰는 것이 중요함.
+  // map함수는 배열 안에 있는 요소 한가지씩을 지정된 콜백함수를 호출하여 그 요소들로 하여금 호출한 콜백함수를 거쳐서 다시 새로운 값으로 변환하게 만듦.
+  console.log(result); // [45, 80, 90, 66, 88]
 }
 
 // Q8. check if there is a student with the score lower than 50
 {
-
+  const result = students.some((student) => student.score < 50);
+  // some 함수는 배열의 요소 중에서 콜백함수가 리턴이 true가 되는 요소가 있는지 없는지를 확인해주는 것임. true인 요소가 1개라도 있으면 됨.
+  console.log(result); // true
+  // some은 배열에서 하나라도 조건에 만족되는 요소가 있다면 true가 리턴이 됨.
+  // 반대로 every는 배열 안의 모든 요소들이 조건을 만족해야 true가 리턴이 됨.
+  const result2 = students.every((student) => student.score >= 50);
+  console.log(result2); // false
 }
 
 // Q9. compute students' average score
 {
-
+  const result = students.reduce((prev, curr) => prev + curr.score, 0); // initial value = 0, 처음의 prev에 0이 리턴됨.
+  console.log(result / students.length); // 73.8
 }
 
-// Q10. make a string containing all the scores 
+// Q10. make a string containing all the scores
 // result should be: '45, 80, 90, 66, 88'
 {
+  const result = students.map((student) => student.score).join();
+  console.log(result); // 함수형 프로그래밍이라고 함.
+} // map()과 join()을 함께 사용함.
+// map은 서로 그 자체, 배열 자체를 리턴하기 때문에 이렇게 api들을 섞어서 호출할 수 있음.
 
-}
-
-// Bonus! do Q10 sorted in ascending order 
+// Bonus! do Q10 sorted in ascending order
 // result should be: '45, 66, 80, 88, 90'
 {
-  
+  const result = students
+    .map((student) => student.score)
+    .sort((a, b) => a - b) // ascending 정렬
+    .join();
+    // sort()의 콜백함수에는 a와 b, 즉 이전값과 현재값이 전달이 됨. 
+    // 내가 만약 '-'값을 리턴하게 되면 첫번째가 뒤에 것보다 작다고 간주(이전값이 현재값보다 작다고 간주)되어져서 정렬이 됨.(ascending) 
+  console.log(result); // '45, 66, 80, 88, 90'
+
+   const result2 = students
+    .map((student) => student.score)
+    .sort((a, b) => b - a) // descending 정렬
+    .join();
+  console.log(result2); // '90, 88, 80, 66, 45'
 }
